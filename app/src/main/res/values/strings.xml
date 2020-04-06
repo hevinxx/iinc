@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">iinc</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_today">Today</string>
+    <string name="tab_monthly">Monthly</string>
+    <string name="tab_history">History</string>
+    <string name="tab_statistics">Statistics</string>
 </resources>
