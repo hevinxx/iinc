@@ -4,4 +4,6 @@
     <string name="tab_monthly">Monthly</string>
     <string name="tab_history">History</string>
     <string name="tab_statistics">Statistics</string>
+
+    <string name="not_fill_enough_error"></string>
 </resources>
