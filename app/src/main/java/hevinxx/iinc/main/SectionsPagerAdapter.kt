@@ -11,16 +11,16 @@ enum class TABS {
     STATISTICS
 }
 
-class SectionsPagerAdapter(private val fa: FragmentActivity) : FragmentStateAdapter(fa) {
+class SectionsPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
     override fun getItemCount() = TABS.values().size
 
     override fun createFragment(position: Int): Fragment {
         return when(TABS.values()[position]) {
-            TABS.TODAY -> PlaceholderFragment()
-            TABS.MONTHLY -> PlaceholderFragment()
-            TABS.HISTORY -> PlaceholderFragment()
-            TABS.STATISTICS -> PlaceholderFragment()
+            TABS.TODAY -> TodayFragment()
+            TABS.MONTHLY -> MonthlyFragment()
+            TABS.HISTORY -> HistoryFragment()
+            TABS.STATISTICS -> StatisticsFragment()
         }
     }
 }
