@@ -2,10 +2,14 @@ package hevinxx.iinc
 
 import android.content.Context
 
-class ResourceDataSource(
+interface ResourceDataSource {
+    fun getString(id: Int): String
+}
+
+class ResourceDataSourceImpl(
     private val context: Context
-) {
-    fun getString(id: Int): String {
+)  : ResourceDataSource {
+    override fun getString(id: Int): String {
         return context.getString(id)
     }
 }
