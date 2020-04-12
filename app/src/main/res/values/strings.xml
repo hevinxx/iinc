@@ -5,5 +5,5 @@
     <string name="tab_history">History</string>
     <string name="tab_statistics">Statistics</string>
 
-    <string name="not_fill_enough_error"></string>
+    <string name="incomplete_field_error">There are incomplete required fields. Please complete them.</string>
 </resources>

@@ -7,6 +7,7 @@ import hevinxx.iinc.R
 import hevinxx.iinc.ResourceDataSource
 import hevinxx.iinc.habit.Habit
 import hevinxx.iinc.habit.data.HabitRepository
+import hevinxx.iinc.set
 import java.util.*
 
 class NewHabitViewModel(
@@ -14,20 +15,37 @@ class NewHabitViewModel(
     private val resourceDataSource: ResourceDataSource
 ) {
     val title = MutableLiveData<String>("")
+
     val color = MutableLiveData<Int>()
-    val daysOfWeek = MutableLiveData<MutableSet<Int>>()
-    val achievementGrade = MutableLiveData<Int>()
+    fun setColor(colorCode: Int) {
+        color.value = colorCode
+    }
+
+    val daysOfWeek = MutableLiveData<MutableList<Boolean>>(
+        mutableListOf(true, true, true, true, true, true, true)
+    )
+
+    fun turnOnOrOffDayOfWeek(dayOfWeek: DayOfWeek) {
+        val index = dayOfWeek.index
+        val preveiousBoolean = daysOfWeek.value?.get(index) ?: false
+        daysOfWeek.set(index, !preveiousBoolean)
+    }
+
+    val achievementGrade = MutableLiveData<Int>(2)
+
     val startDate = MutableLiveData<Date>()
     val endDate = MutableLiveData<Date>()
+
     val needToAlarm = MutableLiveData<Boolean>()
 
-    private val _notFilledEnoughError = MutableLiveData<Event<String>>()
-    val notFilledEnoughError: LiveData<Event<String>>
-        get() = _notFilledEnoughError
+    private val _incompleteFieldError = MutableLiveData<Event<String>>()
+    val incompleteFieldError: LiveData<Event<String>>
+        get() = _incompleteFieldError
 
     fun createNewHabit() {
         val newHabit = getNewHabitInstance()
-        if (newHabit != null) habitRepository.postNewHabit(newHabit)
+        newHabit?.let { habitRepository.postNewHabit(it) }
+            ?: run { emitIncompleteFieldError() }
     }
 
     private fun getNewHabitInstance(): Habit? {
@@ -42,9 +60,22 @@ class NewHabitViewModel(
                 needToAlarm = needToAlarm.value!!
             )
         } catch (e: NullPointerException) {
-            val errorMessage = resourceDataSource.getString(R.string.not_fill_enough_error)
-            _notFilledEnoughError.value = Event(errorMessage)
             null
         }
     }
+
+    private fun emitIncompleteFieldError() {
+        val errorMessage = resourceDataSource.getString(R.string.incomplete_field_error)
+        _incompleteFieldError.value = Event(errorMessage)
+    }
+}
+
+enum class DayOfWeek(val index: Int) {
+    SUNDAY(0),
+    MONDAY(1),
+    TUESDAY(2),
+    WEDNESDAY(3),
+    THURSDAY(4),
+    FRIDAY(5),
+    SATURDAY(6);
 }

@@ -3,6 +3,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="hevinxx.iinc.habit.presentation.NewHabitViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
