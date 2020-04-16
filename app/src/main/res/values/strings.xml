@@ -4,6 +4,18 @@
     <string name="tab_monthly">Monthly</string>
     <string name="tab_history">History</string>
     <string name="tab_statistics">Statistics</string>
+    <string name="new_habit">New habit</string>
+
+    <string name="title">Title</string>
+    <string name="color">Color</string>
+    <string name="days_of_week">Days of week</string>
+    <string name="grades">Grades</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+    <string name="alarm">Alarm</string>
+
+    <string name="date_format">dd/MM/yyyy</string>
 
     <string name="incomplete_field_error">There are incomplete required fields. Please complete them.</string>
+    <string name="post_fail_error">Failed to send data.</string>
 </resources>

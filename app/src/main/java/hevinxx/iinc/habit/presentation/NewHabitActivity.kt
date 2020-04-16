@@ -6,25 +6,32 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import hevinxx.iinc.R
-import hevinxx.iinc.databinding.ActivityNewHabitBinding
+import hevinxx.iinc.databinding.ActivityEditHabitBinding
 import org.koin.android.ext.android.inject
 
 class NewHabitActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityNewHabitBinding
-    val viewModel: NewHabitViewModel by inject()
+    private lateinit var binding: ActivityEditHabitBinding
+    private val viewModel: NewHabitViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_new_habit)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_habit)
         binding.vm = viewModel
+
         handleErrorMessage()
+        setAdapters()
     }
 
     private fun handleErrorMessage() {
-        viewModel.notFilledEnoughError.observe(this, Observer {
-            showToast(it.getContentIfNotHandledOrReturnNull())
+        viewModel.toastMessage.observe(this, Observer {
+            showToast(it.peekContent())
         })
+    }
+
+    private fun setAdapters() {
+        val habitColorSelectAdapter = HabitColorSelectAdapter()
+        binding.colorSelector.adapter = habitColorSelectAdapter
     }
 
     private fun showToast(message: String?) {

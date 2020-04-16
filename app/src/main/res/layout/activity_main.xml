@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/primaryColorSub">
+        android:background="?attr/colorPrimarySub">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/primaryColor"
+            android:background="?attr/colorPrimary"
             app:tabSelectedTextColor="?attr/textColorOnPrimary"
             app:tabIndicatorColor="?attr/textColorOnPrimary"
             app:tabTextColor="?attr/textColorOnPrimarySub" />
