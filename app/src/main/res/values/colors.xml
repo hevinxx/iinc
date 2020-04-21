@@ -11,6 +11,11 @@
     <color name="black">#040406</color>
 
     <color name="red">#fd0e35</color>
+    <color name="orange">#ff7f00</color>
     <color name="yellow">#ffff9f</color>
+    <color name="lightGreen">#b7ff9f</color>
+    <color name="lightBlue">#9fdfff</color>
+    <color name="cobaltBlue">#00498c</color>
     <color name="darkBlue">#1b294b</color>
+    <color name="purple">#6937a1</color>
 </resources>

@@ -6,6 +6,7 @@ import androidx.lifecycle.Transformations
 import hevinxx.iinc.Event
 import hevinxx.iinc.ResourceDataSource
 import hevinxx.iinc.habit.Habit
+import hevinxx.iinc.habit.data.HabitColor
 import hevinxx.iinc.set
 import java.util.*
 
@@ -14,13 +15,8 @@ abstract class EditHabitViewModel(
 ) {
     val title = MutableLiveData("")
 
-    protected val _color = MutableLiveData("#ffffff")
-    val color: LiveData<String>
-        get() = _color
-
-    fun setColor(colorCode: String) {
-        _color.value = colorCode
-    }
+    val colors = HabitColor.values()
+    val colorIndex = MutableLiveData<Int>()
 
     val daysOfWeek = MutableLiveData(
         mutableListOf(true, true, true, true, true, true, true)
@@ -64,7 +60,7 @@ abstract class EditHabitViewModel(
         return try {
             Habit(
                 title = title.value!!,
-                colorCode = _color.value!!,
+                color = resourceDataSource.getColor(colors[colorIndex.value!!].colorId),
                 daysOfWeek = daysOfWeek.value!!,
                 achievementGrade = _achievementGrade.value!!,
                 startDate = _startDate.value!!,
