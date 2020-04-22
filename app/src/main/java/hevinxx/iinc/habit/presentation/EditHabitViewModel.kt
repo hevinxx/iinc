@@ -6,8 +6,8 @@ import androidx.lifecycle.Transformations
 import hevinxx.iinc.Event
 import hevinxx.iinc.ResourceDataSource
 import hevinxx.iinc.habit.Habit
+import hevinxx.iinc.habit.data.DayOfWeek
 import hevinxx.iinc.habit.data.HabitColor
-import hevinxx.iinc.set
 import java.util.*
 
 abstract class EditHabitViewModel(
@@ -18,14 +18,15 @@ abstract class EditHabitViewModel(
     val colors = HabitColor.values()
     val colorIndex = MutableLiveData<Int>()
 
-    val daysOfWeek = MutableLiveData(
-        mutableListOf(true, true, true, true, true, true, true)
-    )
+    val daysOfWeek = DayOfWeek.values()
+    val daysOfWeekSelection = mutableSetOf<DayOfWeek>()
 
     fun turnOnOrOffDayOfWeek(dayOfWeek: DayOfWeek) {
-        val index = dayOfWeek.index
-        val preveiousBoolean = daysOfWeek.value?.get(index) ?: false
-        daysOfWeek.set(index, !preveiousBoolean)
+        if (daysOfWeekSelection.contains(dayOfWeek)) {
+            daysOfWeekSelection.remove(dayOfWeek)
+        } else {
+            daysOfWeekSelection.add(dayOfWeek)
+        }
     }
 
     protected val _achievementGrade = MutableLiveData(2)
@@ -61,7 +62,7 @@ abstract class EditHabitViewModel(
             Habit(
                 title = title.value!!,
                 color = resourceDataSource.getColor(colors[colorIndex.value!!].colorId),
-                daysOfWeek = daysOfWeek.value!!,
+                daysOfWeek = daysOfWeekSelection,
                 achievementGrade = _achievementGrade.value!!,
                 startDate = _startDate.value!!,
                 endDate = _endDate.value!!
@@ -78,14 +79,4 @@ abstract class EditHabitViewModel(
     protected fun finish() {
         _finishEvent.value = Event(true)
     }
-}
-
-enum class DayOfWeek(val index: Int) {
-    SUNDAY(0),
-    MONDAY(1),
-    TUESDAY(2),
-    WEDNESDAY(3),
-    THURSDAY(4),
-    FRIDAY(5),
-    SATURDAY(6);
 }

@@ -6,6 +6,7 @@
     android:padding="@dimen/text_padding">
 
     <ImageView
+        android:id="@+id/check"
         android:layout_width="@dimen/color_button_size"
         android:layout_height="@dimen/color_button_size"
         android:src="@drawable/hollow_circle"

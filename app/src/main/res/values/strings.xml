@@ -15,6 +15,13 @@
     <string name="alarm">Alarm</string>
 
     <string name="date_format">dd/MM/yyyy</string>
+    <string name="sunday_initial">S</string>
+    <string name="monday_initial">M</string>
+    <string name="tuesday_initial">T</string>
+    <string name="wednesday_initial">W</string>
+    <string name="thursday_initial">T</string>
+    <string name="friday_initial">F</string>
+    <string name="saturday_initial">S</string>
 
     <string name="incomplete_field_error">There are incomplete required fields. Please complete them.</string>
     <string name="post_fail_error">Failed to send data.</string>
