@@ -1,4 +1,4 @@
-package hevinxx.iinc.ui.main
+package hevinxx.iinc.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,5 +1,37 @@
 <resources>
     <string name="app_name">iinc</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_today">Today</string>
+    <string name="tab_monthly">Monthly</string>
+    <string name="tab_history">History</string>
+    <string name="tab_statistics">Statistics</string>
+    <string name="new_habit">New habit</string>
+
+    <string name="title">Title</string>
+    <string name="color">Color</string>
+    <string name="days_of_week">Days of week</string>
+    <string name="grades">Grades</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+    <string name="alarm">Alarm</string>
+
+    <string-array name="grades">
+        <item>2: 0% / 100%</item>
+        <item>3: 0% / 50% / 100%</item>
+        <item>4: 0% / 33% / 66% / 100%</item>
+        <item>5: 0% / 25% / 50% / 75% / 100%</item>
+    </string-array>
+
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="sunday_initial">S</string>
+    <string name="monday_initial">M</string>
+    <string name="tuesday_initial">T</string>
+    <string name="wednesday_initial">W</string>
+    <string name="thursday_initial">T</string>
+    <string name="friday_initial">F</string>
+    <string name="saturday_initial">S</string>
+
+    <string name="no_choice">No choice</string>
+
+    <string name="incomplete_field_error">There are incomplete required fields. Please complete them.</string>
+    <string name="post_fail_error">Failed to send data.</string>
 </resources>

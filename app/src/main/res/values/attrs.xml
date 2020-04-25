@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorPrimarySub" format="reference" />
+    <attr name="surfaceColor" format="reference" />
+    <attr name="textColorOnPrimary" format="reference" />
+    <attr name="textColorOnPrimarySub" format="reference" />
+    <attr name="textColorOnBackground" format="reference" />
+    <attr name="textColorOnBackgroundSub" format="reference" />
+    <attr name="textColorOnSurface" format="reference" />
+    <attr name="textColorOnSurfaceSub" format="reference" />
+    <attr name="textColorOnFab" format="reference" />
+    <attr name="borderLineColor" format="reference" />
+    <attr name="borderLineColorSub" format="reference" />
+    <attr name="fabColor" format="reference" />
+</resources>
