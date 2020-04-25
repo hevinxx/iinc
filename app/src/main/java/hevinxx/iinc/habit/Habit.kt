@@ -9,5 +9,5 @@ data class Habit(
     var daysOfWeek: Set<DayOfWeek>,
     var achievementGrade: Int,
     var startDate: Date,
-    var endDate: Date
+    var endDate: Date?
 )

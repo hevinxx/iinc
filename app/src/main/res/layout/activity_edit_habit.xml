@@ -44,6 +44,8 @@
 
                 <TextView
                     style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/title" />
 
                 <EditText
@@ -58,6 +60,8 @@
 
                 <TextView
                     style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/color" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -71,9 +75,10 @@
 
                 <View style="@style/Divider" />
 
-
                 <TextView
                     style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/days_of_week" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -87,37 +92,48 @@
 
                 <View style="@style/Divider" />
 
-
                 <TextView
                     style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/grades" />
 
-                <include
-                    android:id="@+id/grade"
-                    layout="@layout/drop_down"
-                    app:text="@{vm.achievementGrade}" />
+                <Spinner
+                    android:id="@+id/grade_spinner"
+                    style="@style/Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <View style="@style/Divider" />
 
                 <TextView
                     style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/start_date" />
 
-                <include
+                <TextView
                     android:id="@+id/start_date"
-                    layout="@layout/drop_down"
-                    app:text="@{vm.startDate}" />
+                    style="@style/Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.startDate}" />
 
                 <View style="@style/Divider" />
 
                 <TextView
                     style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/end_date" />
 
-                <include
+                <TextView
                     android:id="@+id/end_date"
-                    layout="@layout/drop_down"
-                    app:text="@{vm.endDate}" />
+                    style="@style/Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner"
+                    android:text="@{vm.endDate}" />
 
                 <View style="@style/Divider" />
             </LinearLayout>

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import hevinxx.iinc.Event
+import hevinxx.iinc.R
 import hevinxx.iinc.ResourceDataSource
 import hevinxx.iinc.habit.Habit
 import hevinxx.iinc.habit.data.DayOfWeek
@@ -29,23 +30,45 @@ abstract class EditHabitViewModel(
         }
     }
 
-    protected val _achievementGrade = MutableLiveData(2)
-    val achievementGrade: LiveData<String>
-        get() = Transformations.map(_achievementGrade) {
-            it.toString()
+    val grades = resourceDataSource.getStringArray(R.array.grades)
+    var achievementGrade = 2
+        set(position) {
+            mapGradePositionToGrade(position)
         }
 
-    protected val dateFormat = resourceDataSource.getDateFormat()
+    private fun mapGradePositionToGrade(position: Int): Int {
+        return position + 2
+    }
+
     protected val _startDate = MutableLiveData(Date())
+    protected val dateFormat = resourceDataSource.getDateFormat()
     val startDate: LiveData<String>
         get() = Transformations.map(_startDate) {
             dateFormat.format(it)
         }
-    protected val _endDate = MutableLiveData(Date())
+
+    fun setStartDate(year: Int, month: Int, dayOfMonth: Int) {
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month, dayOfMonth)
+        _startDate.value = calendar.time
+    }
+
+    protected val _endDate = MutableLiveData<Date>(null)
     val endDate: LiveData<String>
         get() = Transformations.map(_endDate) {
-            dateFormat.format(it)
+            if (it == null) resourceDataSource.getString(R.string.no_choice)
+            else dateFormat.format(it)
         }
+
+    fun setEndDate(year: Int, month: Int, dayOfMonth: Int) {
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month, dayOfMonth)
+        _endDate.value = calendar.time
+    }
+
+    fun setEndDate(x: Nothing?) {
+        _endDate.value = null
+    }
 
     protected val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>>
@@ -63,9 +86,9 @@ abstract class EditHabitViewModel(
                 title = title.value!!,
                 color = resourceDataSource.getColor(colors[colorIndex.value!!].colorId),
                 daysOfWeek = daysOfWeekSelection,
-                achievementGrade = _achievementGrade.value!!,
+                achievementGrade = achievementGrade,
                 startDate = _startDate.value!!,
-                endDate = _endDate.value!!
+                endDate = _endDate.value
             )
         } catch (e: NullPointerException) {
             null

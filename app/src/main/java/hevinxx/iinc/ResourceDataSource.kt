@@ -6,15 +6,20 @@ import java.text.SimpleDateFormat
 
 interface ResourceDataSource {
     fun getString(id: Int): String
+    fun getStringArray(id: Int): Array<String>
     fun getColor(id: Int): Int
     fun getDateFormat(): SimpleDateFormat
 }
 
-class ResourceDataSourceImpl(
+open class ResourceDataSourceImpl(
     private val context: Context
 )  : ResourceDataSource {
     override fun getString(id: Int): String {
         return context.getString(id)
+    }
+
+    override fun getStringArray(id: Int): Array<String> {
+        return context.resources.getStringArray(id)
     }
 
     override fun getColor(id: Int): Int {

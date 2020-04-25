@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimarySub">@color/primaryDark</item>
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/primary</item>
         <item name="backgroundColor">@color/white</item>
         <item name="surfaceColor">@color/white</item>
         <item name="textColorOnPrimary">@color/white</item>
@@ -27,8 +27,6 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Label">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?attr/textColorOnSurfaceSub</item>
         <item name="android:layout_marginBottom">@dimen/divider_bottom</item>
         <item name="android:textSize">@dimen/text_label</item>
@@ -63,5 +61,10 @@
         <item name="backgroundTint">?attr/fabColor</item>
         <item name="tint">?attr/textColorOnFab</item>
         <item name="android:layout_margin">@dimen/fab_margin</item>
+    </style>
+
+    <style name="Spinner" parent="ContentText">
+        <item name="android:background">@drawable/spinner</item>
+        <item name="backgroundTint">?attr/textColorOnSurfaceSub</item>
     </style>
 </resources>
