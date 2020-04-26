@@ -102,7 +102,7 @@ class NewHabitActivity : AppCompatActivity() {
             viewModel.setEndDate(year, month, dayOfMonth)
         }
         val datePicker = DatePickerDialog(this, listener, todayYear, todayMonth, todayDayOfMonth)
-        datePicker.setButton(DatePickerDialog.BUTTON_NEGATIVE, getString(R.string.no_choice)) { dialog, _ ->
+        datePicker.setButton(DatePickerDialog.BUTTON_NEUTRAL, getString(R.string.no_choice)) { dialog, _ ->
             viewModel.setEndDate(null)
             dialog.dismiss()
         }
