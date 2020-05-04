@@ -132,7 +132,6 @@
                     style="@style/Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/spinner"
                     android:text="@{vm.endDate}" />
 
                 <View style="@style/Divider" />

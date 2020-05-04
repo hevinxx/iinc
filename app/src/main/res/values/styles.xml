@@ -64,7 +64,7 @@
     </style>
 
     <style name="Spinner" parent="ContentText">
-        <item name="android:background">@drawable/spinner</item>
+        <item name="drawableRightCompat">@drawable/spinner</item>
         <item name="backgroundTint">?attr/textColorOnSurfaceSub</item>
     </style>
 </resources>
