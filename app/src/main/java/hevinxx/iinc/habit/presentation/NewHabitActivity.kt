@@ -30,6 +30,7 @@ class NewHabitActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         handleErrorMessage()
+        handleFinishEvent()
         setAdapters()
     }
 
@@ -107,5 +108,11 @@ class NewHabitActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         end_date.setOnClickListener { datePicker.show() }
+    }
+
+    private fun handleFinishEvent() {
+        viewModel.finishEvent.observe(this, Observer {
+            if (it.getContentIfNotHandledOrReturnNull() == true) finish()
+        })
     }
 }

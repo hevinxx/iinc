@@ -2,15 +2,36 @@ package hevinxx.iinc.habit.data
 
 import hevinxx.iinc.R
 
-enum class DayOfWeek(
-    val index: Int,
-    val initialId: Int
-) {
-    SUNDAY(0, R.string.sunday_initial),
-    MONDAY(1, R.string.monday_initial),
-    TUESDAY(2, R.string.tuesday_initial),
-    WEDNESDAY(3, R.string.wednesday_initial),
-    THURSDAY(4, R.string.thursday_initial),
-    FRIDAY(5, R.string.friday_initial),
-    SATURDAY(6, R.string.saturday_initial);
+enum class DayOfWeek {
+    SUNDAY,
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY;
+
+    fun getDatabaseIndex(): Int {
+        return when (this) {
+            SUNDAY -> 0
+            MONDAY -> 1
+            TUESDAY -> 2
+            WEDNESDAY -> 3
+            THURSDAY -> 4
+            FRIDAY -> 5
+            SATURDAY -> 6
+        }
+    }
+
+    fun getInitialId(): Int {
+        return when (this) {
+            SUNDAY -> R.string.sunday_initial
+            MONDAY -> R.string.monday_initial
+            TUESDAY -> R.string.tuesday_initial
+            WEDNESDAY -> R.string.wednesday_initial
+            THURSDAY -> R.string.thursday_initial
+            FRIDAY -> R.string.friday_initial
+            SATURDAY -> R.string.saturday_initial
+        }
+    }
 }

@@ -24,7 +24,7 @@ class HabitDayOfWeekAdapter(
             notifyItemChanged(position)
         }
         holder.setCheck(viewModel.daysOfWeekSelection.contains(dow))
-        holder.setInitial(dow.initialId)
+        holder.setInitial(dow.getInitialId())
     }
 
 }
