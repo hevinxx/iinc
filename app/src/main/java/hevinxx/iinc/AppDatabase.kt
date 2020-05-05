@@ -2,7 +2,7 @@ package hevinxx.iinc
 
 import android.content.Context
 import androidx.room.*
-import hevinxx.iinc.habit.data.DayOfWeek
+import hevinxx.iinc.util.Dow
 import hevinxx.iinc.habit.data.HabitDao
 import hevinxx.iinc.habit.data.HabitRoomDbEntity
 import java.text.SimpleDateFormat
@@ -40,7 +40,7 @@ class DateConverters {
 
 class DowConverters {
     @TypeConverter
-    fun setOfDowsToBits(setOfDows: Set<DayOfWeek>): Int {
+    fun setOfDowsToBits(setOfDows: Set<Dow>): Int {
         return setOfDows.map {
             2.0.pow(it.getDatabaseIndex()).toInt()
         }.reduce { acc, it ->
@@ -49,8 +49,8 @@ class DowConverters {
     }
 
     @TypeConverter
-    fun bitsToSetOfDows(bits: Int): Set<DayOfWeek> {
-        return DayOfWeek.values().filter {
+    fun bitsToSetOfDows(bits: Int): Set<Dow> {
+        return Dow.values().filter {
             2.0.pow(it.getDatabaseIndex()).toInt() and bits > 0
         }.toSet()
     }

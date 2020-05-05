@@ -1,12 +1,12 @@
 package hevinxx.iinc.habit
 
-import hevinxx.iinc.habit.data.DayOfWeek
+import hevinxx.iinc.util.Dow
 import java.util.*
 
 data class Habit(
     var title: String,
     var color: Int,
-    var daysOfWeek: Set<DayOfWeek>,
+    var dows: Set<Dow>,
     var achievementGrade: Int,
     var startDate: Date,
     var endDate: Date?

@@ -2,7 +2,6 @@ package hevinxx.iinc.habit.presentation
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import hevinxx.iinc.R
 import hevinxx.iinc.databinding.ActivityEditHabitBinding
-import hevinxx.iinc.habit.data.DayOfWeek
+import hevinxx.iinc.util.Dow
 import kotlinx.android.synthetic.main.activity_edit_habit.*
 import org.koin.android.ext.android.inject
 import java.util.*
@@ -59,8 +58,8 @@ class NewHabitActivity : AppCompatActivity() {
     }
 
     private fun setDowSelector() {
-        val dowSelectAdapter = HabitDayOfWeekAdapter(viewModel)
-        binding.dowSelector.layoutManager = GridLayoutManager(this, DayOfWeek.values().size)
+        val dowSelectAdapter = HabitDowAdapter(viewModel)
+        binding.dowSelector.layoutManager = GridLayoutManager(this, Dow.values().size)
         binding.dowSelector.adapter = dowSelectAdapter
     }
 

@@ -1,8 +1,9 @@
-package hevinxx.iinc.habit.data
+package hevinxx.iinc.util
 
 import hevinxx.iinc.R
+import java.util.*
 
-enum class DayOfWeek {
+enum class Dow {
     SUNDAY,
     MONDAY,
     TUESDAY,
@@ -33,5 +34,19 @@ enum class DayOfWeek {
             FRIDAY -> R.string.friday_initial
             SATURDAY -> R.string.saturday_initial
         }
+    }
+}
+
+fun Date.toDow(): Dow {
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return when (calendar.get(Calendar.DAY_OF_WEEK)) {
+        1 -> Dow.SUNDAY
+        2 -> Dow.MONDAY
+        3 -> Dow.TUESDAY
+        4 -> Dow.WEDNESDAY
+        5 -> Dow.THURSDAY
+        6 -> Dow.FRIDAY
+        else -> Dow.SATURDAY
     }
 }
