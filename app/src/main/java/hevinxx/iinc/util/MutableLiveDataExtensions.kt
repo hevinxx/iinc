@@ -1,4 +1,4 @@
-package hevinxx.iinc
+package hevinxx.iinc.util
 
 import androidx.lifecycle.MutableLiveData
 

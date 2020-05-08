@@ -3,7 +3,7 @@ package hevinxx.iinc.habit.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import hevinxx.iinc.Event
+import hevinxx.iinc.util.Event
 import hevinxx.iinc.R
 import hevinxx.iinc.ResourceDataSource
 import hevinxx.iinc.habit.Habit
