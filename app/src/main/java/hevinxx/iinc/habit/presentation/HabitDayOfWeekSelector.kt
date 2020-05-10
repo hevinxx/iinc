@@ -7,29 +7,29 @@ import androidx.recyclerview.widget.RecyclerView
 import hevinxx.iinc.R
 import kotlinx.android.synthetic.main.dow_button.view.*
 
-class HabitDayOfWeekAdapter(
+class HabitDowAdapter(
     private val viewModel: EditHabitViewModel
-) : RecyclerView.Adapter<HabitDayOfWeekViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitDayOfWeekViewHolder {
+) : RecyclerView.Adapter<HabitDowViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitDowViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dow_button, parent, false)
-        return HabitDayOfWeekViewHolder(view)
+        return HabitDowViewHolder(view)
     }
 
-    override fun getItemCount() = viewModel.daysOfWeek.size
+    override fun getItemCount() = viewModel.dows.size
 
-    override fun onBindViewHolder(holder: HabitDayOfWeekViewHolder, position: Int) {
-        val dow = viewModel.daysOfWeek[position]
+    override fun onBindViewHolder(holder: HabitDowViewHolder, position: Int) {
+        val dow = viewModel.dows[position]
         holder.itemView.setOnClickListener {
-            viewModel.turnOnOrOffDayOfWeek(dow)
+            viewModel.turnOnOrOffDow(dow)
             notifyItemChanged(position)
         }
-        holder.setCheck(viewModel.daysOfWeekSelection.contains(dow))
-        holder.setInitial(dow.initialId)
+        holder.setCheck(viewModel.dowsSelection.contains(dow))
+        holder.setInitial(dow.getInitialId())
     }
 
 }
 
-class HabitDayOfWeekViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class HabitDowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun setCheck(check: Boolean) {
         itemView.check.visibility = if (check) View.VISIBLE else View.INVISIBLE
     }

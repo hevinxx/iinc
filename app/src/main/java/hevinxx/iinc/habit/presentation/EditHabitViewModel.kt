@@ -7,7 +7,7 @@ import hevinxx.iinc.Event
 import hevinxx.iinc.R
 import hevinxx.iinc.ResourceDataSource
 import hevinxx.iinc.habit.Habit
-import hevinxx.iinc.habit.data.DayOfWeek
+import hevinxx.iinc.util.Dow
 import hevinxx.iinc.habit.data.HabitColor
 import java.util.*
 
@@ -19,14 +19,14 @@ abstract class EditHabitViewModel(
     val colors = HabitColor.values()
     val colorIndex = MutableLiveData<Int>()
 
-    val daysOfWeek = DayOfWeek.values()
-    val daysOfWeekSelection = mutableSetOf<DayOfWeek>()
+    val dows = Dow.values()
+    val dowsSelection = mutableSetOf<Dow>()
 
-    fun turnOnOrOffDayOfWeek(dayOfWeek: DayOfWeek) {
-        if (daysOfWeekSelection.contains(dayOfWeek)) {
-            daysOfWeekSelection.remove(dayOfWeek)
+    fun turnOnOrOffDow(dow: Dow) {
+        if (dowsSelection.contains(dow)) {
+            dowsSelection.remove(dow)
         } else {
-            daysOfWeekSelection.add(dayOfWeek)
+            dowsSelection.add(dow)
         }
     }
 
@@ -85,7 +85,7 @@ abstract class EditHabitViewModel(
             Habit(
                 title = title.value!!,
                 color = resourceDataSource.getColor(colors[colorIndex.value!!].colorId),
-                daysOfWeek = daysOfWeekSelection,
+                dows = dowsSelection,
                 achievementGrade = achievementGrade,
                 startDate = _startDate.value!!,
                 endDate = _endDate.value
