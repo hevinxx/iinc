@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="habit"
+            type="hevinxx.iinc.habit.Habit" />
+
+        <variable
+            name="record"
+            type="hevinxx.iinc.record.Record" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?borderAndRoundedCornerLayout"
+        android:layout_marginTop="@dimen/layout_padding"
+        android:padding="@dimen/layout_padding">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/ContentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{habit.title}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="독서 30쪽 이상" />
+
+        <TextView
+            style="@style/ContentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{record.memo}"
+            app:layout_constraintLeft_toLeftOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="오늘은 이런이런 책을 읽었다." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

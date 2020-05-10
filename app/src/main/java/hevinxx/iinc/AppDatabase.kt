@@ -5,11 +5,13 @@ import androidx.room.*
 import hevinxx.iinc.util.Dow
 import hevinxx.iinc.habit.data.HabitDao
 import hevinxx.iinc.habit.data.HabitRoomDbEntity
+import hevinxx.iinc.record.data.RecordDao
+import hevinxx.iinc.record.data.RecordRoomDbEntity
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.pow
 
-@Database(entities = [HabitRoomDbEntity::class], version = 1)
+@Database(entities = [HabitRoomDbEntity::class, RecordRoomDbEntity::class], version = 1)
 @TypeConverters(DateConverters::class, DowConverters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
@@ -24,6 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
     abstract fun habitDao(): HabitDao
+    abstract fun recordDao(): RecordDao
 }
 
 class DateConverters {

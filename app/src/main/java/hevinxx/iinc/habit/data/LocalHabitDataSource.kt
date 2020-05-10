@@ -7,15 +7,15 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import java.util.Date
 
-class LocalHabitDataSource(val appDatabase: AppDatabase) : HabitDataSource {
+class LocalHabitDataSource(private val appDatabase: AppDatabase) : HabitDataSource {
     override fun createNewHabit(newHabit: Habit): Completable {
         return appDatabase.habitDao().insertAll(newHabit.toRoomDbEntity())
     }
 
     override fun getHabitsByDate(date: Date): Single<List<Habit>> {
         return appDatabase.habitDao().getHabitsByDate(date)
-            .map {
-                it.filter { checkDow(it, date) }
+            .map { list ->
+                list.filter { checkDow(it, date) }
                     .map { it.toDomainEntity() }
             }
     }

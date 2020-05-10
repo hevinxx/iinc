@@ -19,7 +19,7 @@
         android:layout_height="@dimen/color_button_size"
         android:layout_centerInParent="true"
         android:padding="2dp"
-        app:tint="?attr/backgroundColor"
+        app:tint="?backgroundColor"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_check_black_24dp"
         tools:visibility="visible" />
